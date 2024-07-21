@@ -142,7 +142,7 @@ export default class Core{
 	}
 
 	static #on_dom_change(){
-		window.addEventListener('dom_change', ()=>{
+		window.addEventListener('dom_change', async()=>{
 			// window.dispatchEvent(new CustomEvent('dom_change'));
 			// window.dispatchEvent(new CustomEvent("dom_change", {detail:"menu"}));
 			Log.info("Core.#on_dom_change()");
@@ -150,6 +150,8 @@ export default class Core{
 			// Targets sample event.detail = ["menu", "main"...]
 			// If has target(s) then update the dom. body > target
 			if(!!event.detail === true) DOM.update(event.detail);
+
+			await x.Notification.init();
 		});
 	}
 

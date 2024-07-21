@@ -1,7 +1,7 @@
 export default class Notification{
 	static unseen_count = 0;
 	static poll_interval_func = null;
-	static poll_interval_duration = 60000;
+	static poll_interval_duration = 30000;
 	static types = [
 		"success",
 		"info",
@@ -19,7 +19,7 @@ export default class Notification{
 	}
 
 	static async #poll(){
-		Notification.poll_interval = setInterval(async ()=>{
+		Notification.poll_interval_func = setInterval(async ()=>{
 			await Notification.update_unseen_count();
 		}, Notification.poll_interval_duration);
 	}
@@ -29,7 +29,7 @@ export default class Notification{
 
 		let data = await window.bridge({for: "get_unseen_count"}, "/x/notifications");
 		if("error" in data) return;
-		if(!("data" in data)) return;
+		if(!("data" in data)) Notification.unseen_count = 0;
 
 		Notification.unseen_count = data["data"];
 	}
