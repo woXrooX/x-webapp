@@ -131,7 +131,7 @@ export default class Table extends HTMLElement{
 	#build_table = ()=>{
 		this.querySelector("container > main").innerHTML = `
 			<table class="${this.getAttribute("class") || ""}">
-				<thead class="position-sticky top-0"><tr></tr></thead>
+				<thead class="position-sticky top-5px"><tr></tr></thead>
 				<tbody></tbody>
 				<tfoot><tr></tr></tfoot>
 			</table>
