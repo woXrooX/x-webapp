@@ -53,7 +53,7 @@ export default class Table extends HTMLElement{
 					<column class="w-100">${!!this.JSON?.searchable === true ? '<input type="text" class="w-100">' : ""}</column>
 				</header>
 
-				<main class="scrollbar-x w-100"></main>
+				<main class="scrollbar-x scrollbar-y max-vh-100 w-100"></main>
 
 				<footer class="d-flex flex-row s-flex-column flex-x-between gap-1 w-100">
 					<section class="d-flex flex-row flex-x-start flex-y-center gap-0-5 text-size-0-8">
@@ -131,7 +131,7 @@ export default class Table extends HTMLElement{
 	#build_table = ()=>{
 		this.querySelector("container > main").innerHTML = `
 			<table class="${this.getAttribute("class") || ""}">
-				<thead><tr></tr></thead>
+				<thead class="position-sticky top-0"><tr></tr></thead>
 				<tbody></tbody>
 				<tfoot><tr></tr></tfoot>
 			</table>
